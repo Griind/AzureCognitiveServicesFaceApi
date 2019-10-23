@@ -44,7 +44,7 @@ namespace LiveCameraSample
 {
     public class Visualization
     {
-        private static SolidColorBrush s_lineBrush = new SolidColorBrush(new System.Windows.Media.Color { R = 255, G = 185, B = 0, A = 255 });
+        private static SolidColorBrush s_lineBrush = new SolidColorBrush(new System.Windows.Media.Color { R = 50, G = 235, B = 235, A = 255 });
         private static Typeface s_typeface = new Typeface(new FontFamily("Segoe UI"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal);
 
         private static BitmapSource DrawOverlay(BitmapSource baseImage, Action<DrawingContext, double> drawAction)
@@ -122,7 +122,7 @@ namespace LiveCameraSample
                         summary.Append(Aggregation.SummarizeFaceAttributes(face.FaceAttributes));
                     }
 
-                    if (face.FaceAttributes.Emotion != null)
+                    if (face.FaceAttributes?.Emotion != null)
                     {
                         summary.Append(Aggregation.SummarizeEmotion(face.FaceAttributes.Emotion));
                     }

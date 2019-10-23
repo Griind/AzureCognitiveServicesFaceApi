@@ -35,6 +35,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -327,9 +328,11 @@ namespace LiveCameraSample
             {
                 case AppMode.Faces:
                     _grabber.AnalysisFunction = FacesAnalysisFunction;
+                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.Emotions:
                     _grabber.AnalysisFunction = EmotionAnalysisFunction;
+                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.EmotionsWithClientFaceDetect:
                     // Same as Emotions, except we will display the most recent faces combined with
@@ -339,9 +342,11 @@ namespace LiveCameraSample
                     break;
                 case AppMode.Tags:
                     _grabber.AnalysisFunction = TaggingAnalysisFunction;
+                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.Celebrities:
                     _grabber.AnalysisFunction = CelebrityAnalysisFunction;
+                    _fuseClientRemoteResults = true;
                     break;
                 default:
                     _grabber.AnalysisFunction = null;
@@ -362,6 +367,7 @@ namespace LiveCameraSample
             Properties.Settings.Default.VisionAPIKey = Properties.Settings.Default.VisionAPIKey.Trim();
 
             // Create API clients.
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             _faceClient = new FaceAPI.FaceClient(new FaceAPI.ApiKeyServiceClientCredentials(Properties.Settings.Default.FaceAPIKey))
             {
                 Endpoint = Properties.Settings.Default.FaceAPIHost
