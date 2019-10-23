@@ -84,13 +84,13 @@ namespace LiveCameraSample
                     // Create formatted text--in a particular font at a particular size
                     FormattedText ft = new FormattedText(tag.Name,
                         CultureInfo.CurrentCulture, FlowDirection.LeftToRight, s_typeface,
-                        42 * annotationScale, Brushes.Black);
+                        32 * annotationScale, Brushes.Black);
                     // Instead of calling DrawText (which can only draw the text in a solid colour), we
                     // convert to geometry and use DrawGeometry, which allows us to add an outline. 
                     var geom = ft.BuildGeometry(new System.Windows.Point(10 * annotationScale, y));
                     drawingContext.DrawGeometry(s_lineBrush, new Pen(Brushes.Black, 2 * annotationScale), geom);
                     // Move line down
-                    y += 42 * annotationScale;
+                    y += 32 * annotationScale;
                 }
             };
 
@@ -132,9 +132,9 @@ namespace LiveCameraSample
                         summary.Append(celebName[i]);
                     }
 
-                    faceRect.Inflate(6 * annotationScale, 6 * annotationScale);
+                    faceRect.Inflate(6 * annotationScale, 3 * annotationScale);
 
-                    double lineThickness = 5 * annotationScale;
+                    double lineThickness = 3 * annotationScale;
 
                     drawingContext.DrawRectangle(
                         Brushes.Transparent,
