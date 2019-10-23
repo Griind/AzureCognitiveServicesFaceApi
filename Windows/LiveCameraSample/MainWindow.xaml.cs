@@ -319,7 +319,7 @@ namespace LiveCameraSample
         private void ModeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Disable "most-recent" results display. 
-            _fuseClientRemoteResults = false;
+            _fuseClientRemoteResults = true;
 
             var comboBox = sender as ComboBox;
             var modes = (AppMode[])Enum.GetValues(typeof(AppMode));
@@ -328,25 +328,20 @@ namespace LiveCameraSample
             {
                 case AppMode.Faces:
                     _grabber.AnalysisFunction = FacesAnalysisFunction;
-                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.Emotions:
                     _grabber.AnalysisFunction = EmotionAnalysisFunction;
-                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.EmotionsWithClientFaceDetect:
                     // Same as Emotions, except we will display the most recent faces combined with
                     // the most recent API results. 
                     _grabber.AnalysisFunction = EmotionAnalysisFunction;
-                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.Tags:
                     _grabber.AnalysisFunction = TaggingAnalysisFunction;
-                    _fuseClientRemoteResults = true;
                     break;
                 case AppMode.Celebrities:
                     _grabber.AnalysisFunction = CelebrityAnalysisFunction;
-                    _fuseClientRemoteResults = true;
                     break;
                 default:
                     _grabber.AnalysisFunction = null;

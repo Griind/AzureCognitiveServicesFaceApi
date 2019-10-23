@@ -44,8 +44,8 @@ namespace LiveCameraSample
 {
     public class Visualization
     {
-        private static SolidColorBrush s_lineBrush = new SolidColorBrush(new System.Windows.Media.Color { R = 50, G = 235, B = 235, A = 255 });
-        private static Typeface s_typeface = new Typeface(new FontFamily("Segoe UI"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal);
+        private static readonly SolidColorBrush s_lineBrush = new SolidColorBrush(new System.Windows.Media.Color { R = 50, G = 235, B = 235, A = 255 });
+        private static readonly Typeface s_typeface = new Typeface(new FontFamily("Mark Pro"), FontStyles.Normal, FontWeights.Bold, FontStretches.Normal);
 
         private static BitmapSource DrawOverlay(BitmapSource baseImage, Action<DrawingContext, double> drawAction)
         {
@@ -134,7 +134,7 @@ namespace LiveCameraSample
 
                     faceRect.Inflate(6 * annotationScale, 6 * annotationScale);
 
-                    double lineThickness = 4 * annotationScale;
+                    double lineThickness = 5 * annotationScale;
 
                     drawingContext.DrawRectangle(
                         Brushes.Transparent,

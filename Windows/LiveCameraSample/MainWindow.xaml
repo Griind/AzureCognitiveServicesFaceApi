@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LiveCameraSample"
         mc:Ignorable="d"
-        Title="LiveCameraSample" Height="550" Width="725">
+        Title="AzureCognitiveServices" Height="768" Width="1024">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="932*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="35" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Name="ButtonBar">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Name="ButtonBar" Grid.ColumnSpan="2" Margin="0,0,0.333,669" Grid.RowSpan="2">
             <ComboBox x:Name="CameraList" Width="100" Margin="5,5,0,5" Loaded="CameraList_Loaded" />
             <Button Content="Start Camera" Padding="5,0" Margin="5,5,0,5" Click="StartButton_Click" />
             <Button Content="Stop Camera" Padding="5,0" Margin="5,5,0,5" Click="StopButton_Click" />
             <TextBlock VerticalAlignment="Center" Margin="15,5,0,5" Text="Mode:" />
             <ComboBox x:Name="ModeList" Width="100" Margin="5,5,0,5" Loaded="ModeList_Loaded" SelectionChanged="ModeList_SelectionChanged" />
         </StackPanel>
-        <Button Content="Show/Hide Settings" Padding="5,0" Margin="5" Click="SettingsButton_Click" HorizontalAlignment="Right" />
-        <Grid Grid.Row="1">
+        <Button Content="Show/Hide Settings" Padding="5,0" Margin="0,5,5.333,4.667" Click="SettingsButton_Click" HorizontalAlignment="Right" Grid.Column="1" />
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0.333,0.333,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -66,6 +70,6 @@
                 <Button Margin="5" Content="Save" Click="SaveSettingsButton_Click" />
             </StackPanel>
         </Grid>
-        <TextBlock Name="MessageArea" Margin="5" Grid.Row="2" VerticalAlignment="Center" />
+        <TextBlock Name="MessageArea" Margin="5,9,4.333,9.667" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" />
     </Grid>
 </Window>
